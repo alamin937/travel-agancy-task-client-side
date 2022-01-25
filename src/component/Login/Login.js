@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import UseAuth from '../../UseHooks/UseAuth';
 
 const Login = () => {
-    const {logIn} = UseAuth()
+    const {logIn,googleSignIn} = UseAuth()
     const [email,setEmail] = useState()
     const [password, setPassword] = useState()
     let navigate = useNavigate();
@@ -14,6 +14,11 @@ const Login = () => {
 
         e.preventDefault();
         logIn(email,password,navigate,location)
+    }
+
+
+    const google = () =>{
+        googleSignIn(navigate,location)
     }
 
 
@@ -40,6 +45,7 @@ const Login = () => {
                     Log In
                 </Button>
             </Form>
+            <Button style={{width:'300px', marginTop:'10px'}} onClick={google}>Google SignIn</Button>
             <p style={{marginTop:'15px'}}>Not Register? Please <Link style={{color:'white', fontWeight:'700'}} to='/register'>Registration</Link> </p>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import firebaseAuthentication from "../firebase/firebase.init"
-import { getAuth, createUserWithEmailAndPassword,onAuthStateChanged,signOut , updateProfile, signInWithEmailAndPassword    } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,onAuthStateChanged,signOut , updateProfile, signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider , sendEmailVerification    } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 
@@ -11,16 +11,38 @@ const UseHooks = () =>{
     const [error,setError] = useState()
     const [loading, setLoading] = useState(true);
     const auth = getAuth();
+    const provider = new GoogleAuthProvider();
 
     const register = (email,password,name) =>{
         createUserWithEmailAndPassword(auth, email, password)
         .then(result =>{
             setUser(result.user)
             newUser(name)
+            verification();
             
         })
         .catch(error =>{
             setError(error.message)
+        })
+    }
+
+
+    const googleSignIn = (navigate,location) =>{
+        signInWithPopup(auth, provider)
+        .then((result) => {
+           setUser(result.user)
+           verification();
+           let from = location.state?.from?.pathname || "/";
+            navigate(from, { replace: true });
+        }).catch((error) => {
+          setError(error.message)
+        });
+    }
+
+    const verification = () =>{
+        sendEmailVerification(auth.currentUser)
+        .then(() =>{
+
         })
     }
 
@@ -71,7 +93,8 @@ return{
     logOut,
     error,
     register,
-    logIn
+    logIn,
+    googleSignIn
 }
 
 
