@@ -9,7 +9,7 @@ const ShowExperi = () => {
     const [experis, setExperis] = useState({})
 
     useEffect(() => {
-        fetch(`http://localhost:5000/experience/${experiId}`)
+        fetch(`https://pure-dawn-69415.herokuapp.com/experience/${experiId}`)
             .then(res => res.json())
             .then(data => setExperis(data))
     }, [experiId])

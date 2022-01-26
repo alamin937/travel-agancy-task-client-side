@@ -9,7 +9,7 @@ const AddExperience = () => {
 
     const { register, handleSubmit, control,reset } = useForm();
     const onSubmit = data => {
-        fetch('http://localhost:5000/experience', {
+        fetch('https://pure-dawn-69415.herokuapp.com/experience', {
             method:'POST',
             headers:{
                 "content-type":"application/json"
@@ -43,7 +43,7 @@ const AddExperience = () => {
                     style={{width:'250px',padding:'5px',border:'1px solid grey', borderRadius:'10px'}}
                     render={({ field: { onChange, onBlur, value, ref } }) => (
                         <ReactDatePicker 
-                            
+
                             onChange={onChange}
                             onBlur={onBlur}
                             selected={value}

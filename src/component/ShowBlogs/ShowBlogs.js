@@ -10,7 +10,7 @@ const ShowBlogs = () => {
     const size = 10
 
     useEffect(() => {
-        fetch(`http://localhost:5000/experience?page=${page}&&size=${size}`)
+        fetch(`https://pure-dawn-69415.herokuapp.com/experience?page=${page}&&size=${size}`)
             .then(res => res.json())
             .then(data => {
                 setExperiences(data.result)
