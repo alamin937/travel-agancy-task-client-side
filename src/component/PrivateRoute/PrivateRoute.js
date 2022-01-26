@@ -5,8 +5,11 @@ import UseAuth from "../../UseHooks/UseAuth"
 
 
 const PrivateRoute = ({ children }) =>{
-        const {user} = UseAuth()
+        
+        const {user,loading} = UseAuth()
         let location = useLocation();
+
+        if(loading) return <div style={{textAlign:'center'}}>Loading...</div>
 
         if(user?.email){
             return children;

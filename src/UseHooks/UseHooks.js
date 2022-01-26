@@ -9,6 +9,7 @@ firebaseAuthentication()
 const UseHooks = () =>{
     const [user, setUser] = useState()
     const [error,setError] = useState()
+    const [admin, setAdmin] = useState(false)
     const [loading, setLoading] = useState(true);
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
@@ -18,6 +19,7 @@ const UseHooks = () =>{
         .then(result =>{
             setUser(result.user)
             newUser(name)
+            saveUser(email,name)
             verification();
             
         })
@@ -46,8 +48,15 @@ const UseHooks = () =>{
         })
     }
 
+    useEffect(() =>{
+        fetch(`http://localhost:5000/users/${user?.email}`)
+        .then(res => res.json())
+        .then(data => setAdmin(data.admin))
+    },[user?.email])
+
 
     const logIn = (email,password,navigate,location) =>{
+        setLoading(true)
         signInWithEmailAndPassword(auth, email, password)
         .then(result =>{
             setUser(result.user)
@@ -57,6 +66,7 @@ const UseHooks = () =>{
         .catch(error =>{
             setError(error.message);
         })
+        .finally(() => setLoading(false))
     }
 
 
@@ -68,15 +78,18 @@ const UseHooks = () =>{
             else{
                 setUser({ })
             }
+            setLoading(false)
         })
     },[])
 
 
     const logOut = () =>{
+        setLoading(true)
         signOut(auth)
         .then(() =>{
             setUser({ })
         })
+        .finally(() => setLoading(false))
     }
 
 
@@ -88,13 +101,29 @@ const UseHooks = () =>{
 
 
 
+    const saveUser = (email,name) =>{
+        const user = {email:email, displayName:name}
+        fetch('http://localhost:5000/users', {
+            method:'POST',
+            headers:{
+                "content-type":"application/json"
+            },
+            body:JSON.stringify(user)
+        })
+        .then()
+    }
+
+
+
 return{
     user,
     logOut,
     error,
     register,
     logIn,
-    googleSignIn
+    googleSignIn,
+    admin,
+    loading
 }
 
 

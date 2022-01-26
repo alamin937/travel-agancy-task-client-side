@@ -1,0 +1,10 @@
+.show{
+    width:40%;
+    margin:0 auto;
+}
+
+@media only screen and (max-width:688px) {
+    .show{
+        width:80%;
+    }
+}

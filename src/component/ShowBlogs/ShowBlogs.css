@@ -1,0 +1,22 @@
+.showblogs{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-top: 30px;
+}
+.experi{
+    border-left: 2px solid grey;
+}
+.pagina{
+    text-align: center;
+    margin-top: 20px;
+}
+.pagina button{
+    margin-left: 10px;
+    border: 2px solid grey;
+    padding: 2px 7px;
+}
+
+.pagina .selected{
+    background-color: blue;
+    color: white;
+}

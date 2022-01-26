@@ -5,7 +5,7 @@ import UseAuth from '../../../UseHooks/UseAuth';
 import './NavArea.css'
 
 const NavArea = () => {
-    const {user, logOut} = UseAuth()
+    const {user, logOut,admin} = UseAuth()
     return (
         <div>
             <>
@@ -19,7 +19,12 @@ const NavArea = () => {
                             <Nav className="ms-auto navarea">
                                 <Link to='/home'>Home</Link>
                                 <Link to='/about'>About</Link>
-                               { user?.email ? <Button onClick={logOut} style={{marginLeft:'15px'}}>Log Out</Button>:
+                                <Link to='/experience'>Add Travel Experience</Link>
+                                {admin && <Link to='/dashboard'>DashBoard</Link> }
+                               { user?.email ? <div>
+                                
+                                <Button onClick={logOut} style={{marginLeft:'15px'}}>Log Out</Button>
+                               </div>:
                                 <Link to='/login'>Login</Link> }
                                 <span style={{color:'white', fontSize:'25px', marginLeft:'15px'}}>{user?.displayName}</span>
                             </Nav>
