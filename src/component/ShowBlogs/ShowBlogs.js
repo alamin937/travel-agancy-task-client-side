@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import AddedBlogs from '../AddedBlogs/AddedBlogs';
+import TopRated from '../TopRated/TopRated';
 import './ShowBlogs.css'
 
 const ShowBlogs = () => {
@@ -27,11 +29,12 @@ const ShowBlogs = () => {
         <div>
             <div className='showblogs'>
                 <div className='first'>
-                    <h1>main</h1>
+                   <TopRated></TopRated>
                 </div>
                 <div style={{ width: '95%', margin: '0 auto' }}>
+                    
                     <div className="experi">
-
+                    <h1 style={{marginLeft:'10px'}}>Experience</h1>
                         <div style={{marginLeft:'10px'}}>
                             <Row xs={1} md={4} className="g-4">
 
@@ -62,10 +65,20 @@ const ShowBlogs = () => {
                                                 >{number}</button>)
                                             }
                                         </div>
+                                        <div>
+                                            <h1 style={{marginLeft:'10px'}}>Blogs</h1>
+                                            <div>
+                                            <AddedBlogs></AddedBlogs>
+                                            </div>
+                                        </div>
                         </div>
-
+                       
                     </div>
+                    
                 </div>
+            </div>
+            <div>
+               
             </div>
         </div>
     );

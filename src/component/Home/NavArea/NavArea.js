@@ -18,7 +18,7 @@ const NavArea = () => {
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="ms-auto navarea">
                                 <Link to='/home'>Home</Link>
-                                <Link to='/about'>About</Link>
+                                {/* <Link to='/about'>About</Link> */}
                                 <Link to='/experience'>Add Travel Experience</Link>
                                 {admin && <Link to='/dashboard'>DashBoard</Link> }
                                { user?.email ? <div>

@@ -17,6 +17,7 @@ import AddAdmin from './component/DashBoard/AddAdmin/AddAdmin';
 import AddBlogs from './component/DashBoard/AddBlogs/AddBlogs';
 import AddExperience from './component/AddExperience/AddExperience';
 import ShowExperi from './component/ShowExperi/ShowExperi';
+import Update from './component/Update/Update';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
               </PrivateRoute>}></Route>
               <Route path='/login' element={<Login></Login>}></Route>
               <Route path='/register' element={<Register></Register>}></Route>
+              <Route path='/update/:updateId' element={<Update></Update>}></Route>
               <Route path='/experience' element={<PrivateRoute><AddExperience></AddExperience></PrivateRoute>}></Route>
               <Route path='/experience/:experiId' element={<ShowExperi></ShowExperi>}></Route>
               <Route path='/dashboard' element={<PrivateRoute><DashBoard></DashBoard></PrivateRoute>}>
