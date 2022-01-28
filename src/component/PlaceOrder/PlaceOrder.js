@@ -27,7 +27,7 @@ const PlaceOrder = () => {
     };
 
     useEffect(() => {
-        fetch(`https://pure-dawn-69415.herokuapp.com/${orderId}`)
+        fetch(`https://pure-dawn-69415.herokuapp.com/blogs/${orderId}`)
             .then(res => res.json())
             .then(data => setBlog(data))
     }, [orderId])
