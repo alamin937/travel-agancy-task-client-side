@@ -18,6 +18,8 @@ import AddBlogs from './component/DashBoard/AddBlogs/AddBlogs';
 import AddExperience from './component/AddExperience/AddExperience';
 import ShowExperi from './component/ShowExperi/ShowExperi';
 import Update from './component/Update/Update';
+import PlaceOrder from './component/PlaceOrder/PlaceOrder';
+import MyBook from './component/DashBoard/MyBook/MyBook';
 
 function App() {
   return (
@@ -34,9 +36,11 @@ function App() {
               <Route path='/register' element={<Register></Register>}></Route>
               <Route path='/update/:updateId' element={<Update></Update>}></Route>
               <Route path='/experience' element={<PrivateRoute><AddExperience></AddExperience></PrivateRoute>}></Route>
+              <Route path='/placeorder/:orderId' element={<PrivateRoute><PlaceOrder></PlaceOrder></PrivateRoute>}></Route>
               <Route path='/experience/:experiId' element={<ShowExperi></ShowExperi>}></Route>
               <Route path='/dashboard' element={<PrivateRoute><DashBoard></DashBoard></PrivateRoute>}>
-                <Route path='/dashboard' element={<AllBlogs></AllBlogs>}></Route>
+                <Route path='/dashboard' element={<MyBook></MyBook>}></Route>
+                <Route path='/dashboard/allblog' element={<AllBlogs></AllBlogs>}></Route>
                 <Route path='/dashboard/addadmin' element={<AddAdmin></AddAdmin>}></Route>
                 <Route path='/dashboard/addblogs' element={<AddBlogs></AddBlogs>}></Route>
               </Route>

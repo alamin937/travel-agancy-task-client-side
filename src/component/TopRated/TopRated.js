@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const TopRated = () => {
     const [blogs, setBlogs] = useState([])
@@ -30,6 +31,7 @@ const TopRated = () => {
                                     <h6>Price: ${blog.cost}</h6>
                                     <h6>Category: {blog.category}</h6>
                                 </Card.Body>
+                                <Link to={`/placeorder/${blog._id}`}><Button style={{width:'100%'}}>Book</Button> </Link>
                             </Card>
                         </Col>
                     </div>)

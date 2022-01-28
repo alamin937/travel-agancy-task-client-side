@@ -5,7 +5,7 @@ import UseAuth from '../../../UseHooks/UseAuth';
 import './NavArea.css'
 
 const NavArea = () => {
-    const {user, logOut,admin} = UseAuth()
+    const {user, logOut} = UseAuth()
     return (
         <div>
             <>
@@ -20,7 +20,7 @@ const NavArea = () => {
                                 <Link to='/home'>Home</Link>
                                 {/* <Link to='/about'>About</Link> */}
                                 <Link to='/experience'>Add Travel Experience</Link>
-                                {admin && <Link to='/dashboard'>DashBoard</Link> }
+                                <Link to='/dashboard'>DashBoard</Link>
                                { user?.email ? <div>
                                 
                                 <Button onClick={logOut} style={{marginLeft:'15px'}}>Log Out</Button>
